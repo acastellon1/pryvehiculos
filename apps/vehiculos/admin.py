@@ -8,7 +8,7 @@ class VehiculoAdmin(admin.ModelAdmin):
     list_display = ('modelo', 'color', 'placa', 'motor', 'marca', 'tipovehiculo')
     ordering = ('modelo', 'color', 'placa', 'motor', 'marca', 'tipovehiculo')
     search_fields =('modelo', 'marca__nombre', 'tipovehiculo__nombre')
-    list_filter = ('marca' ,'modelo','tipovehiculo',)
+    list_filter = ('modelo', 'marca' ,'tipovehiculo',)
 
 
 admin.site.register(TipoVehiculo)
