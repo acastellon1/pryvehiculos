@@ -1,0 +1,52 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    
+
+    <h1 class="pull-right">
+        <div class="row">
+            <div class="col-4">
+                <h3> Listado de Marcas </h3>
+            </div>
+
+            <div class="col-4">
+
+            </div>
+
+            <div class="col-4">
+                <a href="{% url 'vehiculos:marcaCreate' %}" class="btn btn-primary pull-right" style="margin-top: -10px; margin-bottom: 5px;">Adicionar</a>
+            </div>
+        </div>
+        
+    </h1>
+
+    <table class="table table-success table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">nombre</th>
+            <th scope="col">opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% if vehiculos %}
+            {% for marca in vehiculos %}
+                <tr>
+                    <td>{{ marca.id }}</td>
+                    <td>{{ marca.nombre }}</td>
+                    <td class="d-flex justify-content-center">
+                        <a class="btn btn-primary btn-warning btn-xs" href="{% url 'vehiculos:marcaEdit' marca.id %}">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+  
+                        <a class="btn btn-primary btn-dange btn-xs" href="{% url 'vehiculos:marcaElim' marca.id %}">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </a>
+                </tr>
+            {% endfor %}
+          {% else %}
+              <h3>No existen registros</h3>
+           {% endif %}
+        </tbody>
+      </table>
+{% endblock %}

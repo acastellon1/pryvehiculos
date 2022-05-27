@@ -1,0 +1,59 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+       <div class="row" style="padding: 50px">
+           <div class="col-3"></div>
+           <div class="col-6 text-center" style=" background-color:rgb(255, 255, 255);padding: 5px">
+                <div  class="form-group" >
+                   <h5 style="font-family: serif;"><b>Mostrar el valor total de vehiculos vendidos en un intervalo de fecha, discriminados por día</b></h5>
+                    <br>
+                    <h5 style="font-family: serif;"><b>Ingrese el intervalo de fechas:</b></h5>
+                    <br>
+                    <div style="padding: 5px">
+                        <label style="font-family: serif;" for="fecha1"><b> Inicial: </b> </label>
+                        <input type="date" name="fecha1">
+                    </div>
+                    <div style="padding: 5px"> 
+                        <label style="font-family: serif;" for="fecha2"><b> Final:</b></label>
+                        <input type="date" name="fecha2">
+                    </div>
+                </div>
+                <div  class="form-group text-center">
+                    <br>
+                    <button style="font-family: serif;"  class="btn btn-primary" type="submit"><b>
+                        Consultar
+                    </b></button>
+                </div>
+            </div>
+       </div>
+    </form>
+    <div class="row" style="padding: 0px">
+        <div class="col-3"></div>
+        <div class="col-6 text-center" style=" background-color:rgb(154, 255, 179);padding: 5px; border-radius: 10px;">
+             <div  class="form-group">
+                <table class="table table-primary table-hover">
+                    <thead>
+                      <tr class="table-info" >
+                        <th style="font-family: serif; text-align: center;" scope="col"><b>Fecha</b></th>
+                        <th style="font-family: serif; text-align: center;" scope="col"><b>Valor Total</b></th>
+                      </tr>
+                    </thead>
+                    <tbody> 
+                    {% if consulta2 %}
+                        {% for consulta in consulta2 %}
+                            <tr>
+                                <td>{{ consulta.fecha}}</td>
+                                <td>{{ consulta.total}}</td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <h5 style="font-family: serif;"><b>¡Lista Vacía!</b></h5>
+                    {%endif%}
+                    </tbody>
+                </table>
+            </div>
+         </div>
+    </div>
+{% endblock  %}

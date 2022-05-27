@@ -45,6 +45,14 @@
                     <td>{{ vehiculo.motor }}</td>
                     <td>{{ vehiculo.marca }}</td>
                     <td>{{ vehiculo.tipovehiculo }}</td>
+                    <td class="d-flex justify-content-center">
+                      <a class="btn btn-primary btn-warning btn-xs" href="{% url 'vehiculos:vehiculoEdit' vehiculo.id %}">
+                          <i class="fa-solid fa-pen-to-square"></i>
+                      </a>
+
+                      <a class="btn btn-primary btn-dange btn-xs" href="{% url 'vehiculos:vehiculoElim' vehiculo.id %}">
+                          <i class="fa-solid fa-trash-can"></i>
+                      </a>
                 </tr>
             {% endfor %}
           {% else %}

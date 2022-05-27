@@ -16,9 +16,14 @@ class Venta(models.Model):
     def __str__(self):
         return str(self.valorTotal)
 
+    
+
 
 class VehiculoVenta(models.Model):
     vehiculo = models.ForeignKey(Vehiculo, on_delete=models.CASCADE, blank=False, null=False)
     venta = models.ForeignKey(Venta, on_delete=models.CASCADE, blank=False, null=False)
     cantidad = models.IntegerField()
     precio = models.BigIntegerField()
+
+    def __str__(self):
+        return str(self.vehiculo)

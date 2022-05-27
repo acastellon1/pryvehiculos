@@ -1,0 +1,40 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+       <div class="row" style="padding: 80px">
+           <div class="col-3"></div>
+           <div class="col-6 text-center" style=" background-color:rgb(255, 255, 255);padding: 5px">
+                <div  class="form-group">
+                   <h4 style="font-family: serif;"><b>Mostrar el valor total de vehiculos vendidos en un intervalo de fecha</b></h4>
+                    <br>
+                    <h4 style="font-family: serif;"><b> Ingrese el intervalo de fechas:</b></h4>
+                    <br>
+                    <div style="padding: 5px">
+                        <label style="font-family: serif;" for="fecha1"><b>Fecha Inicial:</b></label>
+                        <input type="date" name="fecha1">
+                    </div>
+                    <div style="padding: 5px"> 
+                        <label style="font-family: serif;" for="fecha2"><b>Fecha Final:</b></label>
+                        <input type="date" name="fecha2">
+                    </div>
+                </div>
+                <div  class="form-group text-center">
+                    <br>
+                    <button style="font-family: serif;"  class="btn btn-primary" type="submit"><b>
+                        Consultar
+                    </b></button>
+                </div>
+            </div>
+       </div>
+    </form>
+    <div class="row" style="padding: 0px">
+        <div class="col-3"></div>
+        <div class="col-6 text-center" style=" background-color:rgb(154, 255, 179);padding: 5px; border-radius: 20px;">
+             <div class="form-group">
+                    <h5 style="font-family: serif;"> <b> El valor total de vehiculos vendidos dentro del rango  ingresado es de {{context.consulta1.valorTotal__sum}}</b></h5>
+            </div>
+         </div>
+    </div>
+{% endblock  %}

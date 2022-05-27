@@ -1,0 +1,12 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <h3>¿Desea eliminar el registro de {{ tipovehiculo.nombre }}?</h3>
+    <button class="btn btn-danger" type="submit">
+        Si, Eliminar
+    </button>
+    <a href="{% url 'vehiculos:listTipoVehiculos' %}" class="btn btn-primary">Cancelar</a>
+</form>
+{% endblock  %}
